@@ -2,7 +2,7 @@
 import openai
 import os
 
-openai.api_key = os.getenv("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") # replace with your API key
+openai.api_key = os.getenv("") # replace with your API key
 
 # set up the OpenAI API parameters
 model_engine = "davinci" # or another language model
