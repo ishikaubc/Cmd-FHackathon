@@ -26,7 +26,16 @@
       <label for="location">Enter your Location: <input id="location" name="location" type="text"></label>
       <select name= "location" id= "location">
         <?php
-            require_once 'includes/dbh.inc.php';
+            $serverName = "localhost";
+            $dBUsername = "root";
+            $dBPassword = "";
+            $dBName = "lifeconnect";
+            
+            $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+            
+            if (!$conn) {
+                die("Connection failed: " . mysqli_connect_error()); // kill
+            }
 
             $result=mysqli_query($conn,"select * from canadacities");
             echo"<select name='location'>";
