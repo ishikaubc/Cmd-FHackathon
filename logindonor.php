@@ -1,3 +1,4 @@
+<!-- includes header -->
 <?php
     include_once 'header.php';
 ?>
@@ -10,6 +11,7 @@
         <button type="submit" name="submit">Login</button>
     </form> 
 
+    <!-- error handling for form inputs -->
     <?php
     if (isset($_GET["error"])) {
         if ($_GET["error"] == "emptyinput") {
@@ -22,3 +24,7 @@
 
 </section>
     
+<!-- includes footer -->
+<?php
+    include_once 'footer.php';
+?>

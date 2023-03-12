@@ -1,3 +1,4 @@
+<!-- includes header -->
 <?php
     include_once 'header.php';
 ?>
@@ -10,6 +11,7 @@
         <input type="text" name="name" placeholder="Full Name...">
         <input type="text" name="email" placeholder="Email...">
 
+        <!-- drop down menu to select location -->
         <?php
             require_once 'includes/dbh.inc.php';
 
@@ -27,6 +29,7 @@
         <button type="submit" name="submit">Sign Up</button>
     </form> 
 
+    <!-- error handling for form input -->
     <?php
     if (isset($_GET["error"])) {
         if ($_GET["error"] == "emptyinput") {
@@ -47,7 +50,7 @@
 
 </section>
 
+<!-- includes footer -->
 <?php
     include_once 'footer.php';
 ?>
-    
