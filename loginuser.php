@@ -4,7 +4,9 @@
 ?>
 
 <section class="loginuser-form">
-    <h2>Login</h2>
+    <h1>Login as User</h1>
+    <link rel="stylesheet" href="SignUpForms\donorlogin.css" />
+    
     <form action="includes/loginuser.inc.php" method="post">
         <input type="text" name="username" placeholder="Username...">
         <input type="password" name="password" placeholder="Password...">

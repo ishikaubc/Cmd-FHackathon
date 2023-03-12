@@ -4,7 +4,8 @@
 ?>
 
 <section class="signupuser-form">
-    <h2>Sign Up as a User</h2>
+    <h1>Sign Up as a User</h1>
+    <link rel="stylesheet" href="SignUpForms\donorlogin.css" />
     <form action="includes/signupuser.inc.php" method="post">
         <input type="text" name="username" placeholder="Enter a username...">
         <input type="password" name="password" placeholder="Password...">

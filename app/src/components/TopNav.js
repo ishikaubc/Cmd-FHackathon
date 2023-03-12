@@ -7,8 +7,10 @@ function TopNav() {
         <input type = 'text' id = "search" className = "search-bar" placeholder="Search"></input>
         <div className="sidehold">
                 <a className="nav-link" href="blog">Blog</a>
-                <a className="nav-link" href="">Forum</a>
-                <a className="nav-link" href="">Sign up</a>
+                <a className="nav-link" href="">Sign Up as User</a>
+                <a className="nav-link" href="">Sign Up as Donor</a>
+                <a className="nav-link" href="">Login as User</a>
+                <a className="nav-link" href="">Login as Donor</a>
         </div>
     </nav>
     );

@@ -4,6 +4,7 @@ import {BrowserRouter, Switch, Routes, Route} from "react-router-dom";
 import './index.css';
 import App from './App';
 import Blog from './blogsrc/Main';
+import SignUpUser from './signupuser.php';
 
 
 import reportWebVitals from './reportWebVitals';
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "Blog",
     element: <Blog/>
+  },
+  {
+    path: "C:\wamp64\www\GitHub\Cmd-FHackathon\app\signupuser.php",
+    element: <SignUpUser/>
   }
 ]);
 const root = ReactDOM.createRoot(document.getElementById('root'));

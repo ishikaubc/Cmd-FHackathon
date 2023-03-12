@@ -4,7 +4,8 @@
 ?>
 
 <section class="logindonor-form">
-    <h2>Login</h2>
+    <h1>Login as Donor</h1>
+    <link rel="stylesheet" href="SignUpForms\donorlogin.css" />
     <form action="includes/logindonor.inc.php" method="post">
         <input type="text" name="username" placeholder="Username...">
         <input type="password" name="password" placeholder="Password...">

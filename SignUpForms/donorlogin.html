@@ -7,7 +7,7 @@
   </head>
   <body>
     <div class = "sign-up-form">
-    <h1>Donor Resiteration Form</h1>
+    <h1>Donor Registration Form</h1>
     <p>Please fill out this form with the required information</p>
     <form method="post">
       <fieldset>
@@ -25,24 +25,24 @@
         <select name = "location" id = "location">
         <!-- drop down menu to select location -->
         <?php
-        $serverName = "localhost";
-        $dBUsername = "root";
-        $dBPassword = "";
-        $dBName = "lifeconnect";
-        
-        $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
-        
-        if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error()); // kill
-        }
+          $serverName = "localhost";
+          $dBUsername = "root";
+          $dBPassword = "";
+          $dBName = "lifeconnect";
+          
+          $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+          
+          if (!$conn) {
+              die("Connection failed: " . mysqli_connect_error()); // kill
+          }
 
-            $result=mysqli_query($conn,"select * from canadacities");
-            echo"<select name='location'>";
-            echo"<option>-- Select Location -- </option>";
-                while($row=mysqli_fetch_array($result)) {
-                    echo"<option>$row[city]</option>";
-                }
-            echo"</select>";
+              $result=mysqli_query($conn,"select * from canadacities");
+              echo"<select name='location'>";
+              echo"<option>-- Select Location -- </option>";
+                  while($row = mysqli_fetch_array($result)) {
+                      echo"<option>"$row[city]"</option>";
+                  }
+              echo"</select>";
         ?>
           <select id="referrer" name="referrer">
             <option value="">(select one)</option>
