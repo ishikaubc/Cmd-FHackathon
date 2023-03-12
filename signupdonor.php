@@ -1,33 +1,35 @@
 <!-- includes header -->
 <?php
-    include_once 'header.php';
+include_once 'header.php';
 ?>
 
 <section class="signupdonor-form">
     <h2>Sign Up as a Donor</h2>
     <form action="includes/signupdonor.inc.php" method="post">
-        <input type="text" name="username" placeholder="Enter a username...">
-        <input type="password" name="password" placeholder="Password...">
-        <input type="text" name="name" placeholder="Full Name...">
-        <input type="text" name="email" placeholder="Email...">
+        <fieldset>
+            <input type="text" name="username" placeholder="Enter a username...">
+            <input type="password" name="password" placeholder="Password...">
+            <input type="text" name="name" placeholder="Full Name...">
+            <input type="text" name="email" placeholder="Email...">
 
-        <!-- drop down menu to select location -->
-        <?php
+            <!-- drop down menu to select location -->
+            <?php
             require_once 'includes/dbh.inc.php';
 
-            $result=mysqli_query($conn,"select * from canadacities");
-            echo"<select name='location'>";
-            echo"<option>-- Select Location -- </option>";
-                while($row=mysqli_fetch_array($result)) {
-                    echo"<option>$row[city]</option>";
-                }
-            echo"</select>";
-        ?>
+            $result = mysqli_query($conn, "select * from canadacities");
+            echo "<select name='location'>";
+            echo "<option>-- Select Location -- </option>";
+            while ($row = mysqli_fetch_array($result)) {
+                echo "<option>$row[city]</option>";
+            }
+            echo "</select>";
+            ?>
 
-        <input type="text" name="bloodtype" placeholder="Blood Type...">
-        <input type="text" name="history" placeholder="Medical History...">
-        <button type="submit" name="submit">Sign Up</button>
-    </form> 
+            <input type="text" name="bloodtype" placeholder="Blood Type...">
+            <input type="text" name="history" placeholder="Medical History...">
+            <button type="submit" name="submit">Sign Up</button>
+        </fieldset>
+    </form>
 
     <!-- error handling for form input -->
     <?php
@@ -44,7 +46,7 @@
             echo "<p>Something went wrong!</p>";
         } else if ($_GET["error"] == "none") {
             echo "<p>You have signed up!</p>";
-        } 
+        }
     }
     ?>
 
@@ -52,5 +54,5 @@
 
 <!-- includes footer -->
 <?php
-    include_once 'footer.php';
+include_once 'footer.php';
 ?>

@@ -1,27 +1,44 @@
 <!-- includes header -->
 <?php
-    include_once 'header.php';
+include_once 'header.php';
 ?>
 
 <section class="profileuser-form">
     <?php
-        $tryUser = $_SESSION["userUsername"];
+    $tryUser = $_SESSION["userUsername"];
 
-        require_once 'includes/dbh.inc.php';
-        require_once 'includes/functionsloginuser.inc.php';
+    require_once 'includes/dbh.inc.php';
+    require_once 'includes/functionsloginuser.inc.php';
 
-        $user = uidExists($conn, $tryUser);
+    $user = uidExists($conn, $tryUser);
 
-        echo "<h3>Hello, $user[usersName]</h3>";
+    echo "<h3>Hello, $user[usersName]</h3>";
+
+    $result1 = mysqli_query($conn, "select * from matches");
+
+    $match = NULL;
+
+    while ($row = mysqli_fetch_array($result1)) {
+        $userUsername = $row["user"];
+
+        if ($user["usersUsername"] == $userUsername) {
+            $match = $row;
+        }
+    }
+
+    if ($match !== NULL) {
+        echo "<h3>$match[user] has matched with $match[donor]</h3>";
+    }
+
     ?>
 
     <form action="includes/profileuser.inc.php" method="post">
         <input type="submit" name="button1" class="button" value="Find a Donor" />
-    </form>    
+    </form>
 
 </section>
 
 <!-- includes footer -->
 <?php
-    include_once 'footer.php';
+include_once 'footer.php';
 ?>
