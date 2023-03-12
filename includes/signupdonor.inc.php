@@ -11,31 +11,31 @@ if (isset($_POST["submit"])) {
     $history = $_POST["history"];
 
     require_once 'dbh.inc.php';
-    require_once 'functions.inc.php';
+    require_once 'functionsdonor.inc.php';
 
     if (emptyInputSignup($username, $password, $name, $email, $location, $bloodtype, $history) !== false) {
-        header("location: ../signup.php?error=emptyinput");
+        header("location: ../signupdonor.php?error=emptyinput");
         exit();
     }
 
     if (invalidUid($username) !== false) {
-        header("location: ../signup.php?error=invaliduid");
+        header("location: ../signupdonor.php?error=invaliduid");
         exit();
     }
 
     if (invalidEmail($email) !== false) {
-        header("location: ../signup.php?error=invalidemail");
+        header("location: ../signupdonor.php?error=invalidemail");
         exit();
     }
 
     if (uidExists($conn, $username, $email) !== false) {
-        header("location: ../signup.php?error=usernametaken");
+        header("location: ../signupdonor.php?error=usernametaken");
         exit();
     }
 
     createUser($conn, $username, $password, $name, $email, $location, $bloodtype, $history);
 
 } else {
-    header("location: ../signup.php");
+    header("location: ../signupdonor.php");
     exit();
 }
