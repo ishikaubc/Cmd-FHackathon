@@ -9,7 +9,7 @@
 </section>
 
    <div class = "sign-up-form">
-    <h1>Donor Resiteration Form</h1>
+    <h1>Donor Registration Form</h1>
     <p>Please fill out this form with the required information</p>
     <form method="post">
       <fieldset>
