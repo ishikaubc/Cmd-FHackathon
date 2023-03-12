@@ -64,6 +64,6 @@ function createUser($conn, $username, $password, $name, $email, $location, $bloo
     mysqli_stmt_bind_param($stmt, "sssssss", $username, $hashedPwd, $name, $email, $location, $bloodtype, $history);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../index.php"); // TODO
+    header("location: ../signupdonor.php?error=none"); 
     exit();
 }
