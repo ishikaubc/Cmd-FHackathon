@@ -4,9 +4,11 @@
 ?>
 
 <link rel = "stylesheet" stylesheet = "donorlogin.css">
-<section class = "login-image">
-    <image src = "/Users/ishikaagarwal/Cmd-FHackathon/1.jpg" alt="donor">
-</section>
+<section >
+
+<div class = "login-image">
+    <image src = "1.jpg" alt="donor">
+</div>
 
    <div class = "sign-up-form">
     <h1>Donor Resiteration Form</h1>
@@ -58,6 +60,7 @@
         } 
     }
     ?>
+    </div>
 
 </section>
 
