@@ -49,7 +49,7 @@ function loginUser($conn, $username, $password) {
         exit();
     } else if ($checkPassword == true) {
         session_start();
-        $_SESSION["donorsUsername"] = $uidExists["donorsUsername"];
+        $_SESSION["donorUsername"] = $uidExists["donorsUsername"];
         header("location: ../index.php");
         exit();
     }

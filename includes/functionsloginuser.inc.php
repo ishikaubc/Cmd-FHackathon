@@ -49,7 +49,7 @@ function loginUser($conn, $username, $password) {
         exit();
     } else if ($checkPassword == true) {
         session_start();
-        $_SESSION["usersUsername"] = $uidExists["usersUsername"];
+        $_SESSION["userUsername"] = $uidExists["usersUsername"];
         header("location: ../index.php");
         exit();
     }
