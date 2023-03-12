@@ -35,6 +35,7 @@ function uidExists($conn, $username, $email) {
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../signupuser.php?error=stmtfailed");
+        exit();
     }
 
     mysqli_stmt_bind_param($stmt, "ss", $username, $email);

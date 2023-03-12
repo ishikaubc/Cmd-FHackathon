@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir ="ltr">
     <head>
@@ -9,9 +13,18 @@
             <div class="wrapper">
                 <ul>
                     <li><a href="index.php">LifeConnect</a></li>
-                    <li><a href="signupdonor.php">Sign Up as a Donor</a></li>
-                    <li><a href="signupuser.php">Sign Up as a User</a></li>
-                    <li><a href="login.php">Login</a></li>
+
+                    <?php
+                        if (isset($SESSION["donorsUsername"])) {
+                            echo "<li><a href='profile.php'>Profile Page</a></li>";
+                            echo "<li><a href='logout.php'>Logout</a></li>";
+                        } else {
+                            echo "<li><a href='signupdonor.php'>Sign Up as a Donor</a></li>";
+                            echo "<li><a href='signupuser.php'>Sign Up as a User</a></li>";
+                            echo "<li><a href='logindonor.php'>Login</a></li>";
+                            echo "<li><a href='loginuser.php'>Login</a></li>";
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>
