@@ -30,12 +30,14 @@ include_once 'header.php';
         echo "<h3>$match[user] has matched with $match[donor]</h3>";
     }
 
+    
+
+    if ($match == NULL) {
+        echo "<form action='includes/profileuser.inc.php' method='post'>
+            <input type='submit' name='button1' class='button' value='Find a Donor' />
+        </form>";
+    } 
     ?>
-
-    <form action="includes/profileuser.inc.php" method="post">
-        <input type="submit" name="button1" class="button" value="Find a Donor" />
-    </form>
-
 </section>
 
 <!-- includes footer -->
