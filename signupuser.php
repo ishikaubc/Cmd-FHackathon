@@ -9,7 +9,19 @@
         <input type="password" name="password" placeholder="Password...">
         <input type="text" name="name" placeholder="Full Name...">
         <input type="text" name="email" placeholder="Email...">
-        <input type="text" name="location" placeholder="Location...">
+        
+        <?php
+            require_once 'includes/dbh.inc.php';
+
+            $result=mysqli_query($conn,"select * from canadacities");
+            echo"<select name='location'>";
+            echo"<option>-- Select Location -- </option>";
+                while($row=mysqli_fetch_array($result)) {
+                    echo"<option>$row[city]</option>";
+                }
+            echo"</select>";
+        ?>
+
         <input type="text" name="bloodtype" placeholder="Blood Type...">
         <input type="text" name="description" placeholder="Description...">
         <button type="submit" name="submit">Sign Up</button>
