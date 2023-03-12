@@ -1,6 +1,29 @@
+import { useState } from "react";
+import $ from "jquery";
 import './TopNav.css'
 
 function TopNav() {
+
+    const [name, setName] = useState("");
+    const [result, setResult] = useState("");
+  
+    const handleChange = (e) => {
+        setName(e.target.value);
+    };
+  
+    const handleSumbit = (e) => {
+        e.preventDefault();
+        const form = $(e.target);
+        $.ajax({
+            type: "POST",
+            url: form.attr("action"),
+            data: form.serialize(),
+            success(data) {
+                setResult(data);
+            },
+        });
+    };
+
     return (
     <nav className="hold">
         <a className="title" href="#page-top">LifeConnect</a>
@@ -12,6 +35,21 @@ function TopNav() {
                 <a className="nav-link" href="">Login as User</a>
                 <a className="nav-link" href="">Login as Donor</a>
         </div>
+        <form
+                action="signupuser.inc.php"
+                method="post"
+                onSubmit={(event) => handleSumbit(event)}
+        >
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={name}
+                    onChange={(event) => handleChange(event)}
+                />
+                <br />
+                <button type="submit">Submit</button>
+        </form>
     </nav>
     );
 }

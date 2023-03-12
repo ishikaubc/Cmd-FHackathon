@@ -1,6 +1,8 @@
 <!-- includes header -->
 <?php
-    include_once 'header.php';
+    header('Access-Control-Allow-Origin: http://localhost:3000');
+
+    // include_once 'header.php';
 ?>
 
 <section class="signupuser-form">
@@ -53,5 +55,5 @@
     
 <!-- includes footer -->
 <?php
-    include_once 'footer.php';
+    // include_once 'footer.php';
 ?>
