@@ -119,13 +119,11 @@ function matchUser($username) {
         $donorBloodtype = $row["donorsBloodtype"];
 
         $distance = haversineGreatCircleDistance($userLatitude, $userLongitude, $donorLatitude, $donorLongitude, 6371000);
-        
-        // CHECK THAT BLOOD TYPE MATCHES
 
         if ($minDistance == -1) {
             if ($userBloodtype == $donorBloodtype) {
                 $minDistance = $distance;
-                $minDistanceDonor = $row["donorsName"];
+                $minDistanceDonor = $row["donorsUsername"];
             }
             
         } 
@@ -133,7 +131,7 @@ function matchUser($username) {
         if ($distance < $minDistance) {
             if ($userBloodtype == $donorBloodtype) {
                 $minDistance = $distance;
-                $minDistanceDonor = $row["donorsName"];
+                $minDistanceDonor = $row["donorsUsername"];
             }
         }
     }

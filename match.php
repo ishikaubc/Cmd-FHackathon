@@ -3,7 +3,7 @@
     include_once 'header.php';
 ?>
 
-<section class="profileuser-form">
+<section class="matchuser-form">
     <?php
         $tryUser = $_SESSION["userUsername"];
 
@@ -12,13 +12,14 @@
 
         $user = uidExists($conn, $tryUser);
 
-        echo "<h3>Hello, $user[usersName]</h3>";
+        echo "<h3>Congrats, $user[usersName]</h3>";
+        echo "<h3>We found a match!</h3>";
     ?>
 
-    <form action="includes/profileuser.inc.php" method="post">
-        <input type="submit" name="button1" class="button" value="Find a Donor" />
-    </form>    
-
+    <form action="includes/match.inc.php" method="post">
+        <input type="submit" name="button1" class="button" value="Accept Donor" />
+    </form>
+    
 </section>
 
 <!-- includes footer -->
