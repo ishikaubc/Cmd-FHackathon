@@ -72,6 +72,29 @@ function findCityByName($conn, $city) {
     mysqli_stmt_close($stmt);
 }
 
+function findBloodtypeByName($conn, $username) {
+    $sql = "SELECT * FROM users WHERE usersUsername = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../index.php"); // CHANGE THIS
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "s", $username);
+    mysqli_stmt_execute($stmt);
+
+    $resultData = mysqli_stmt_get_result($stmt);
+
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        return $row["usersBloodtype"];
+    } else {
+        $result = false;
+        return $result;
+    }
+
+    mysqli_stmt_close($stmt);
+}
+
 // given user's username, find username of donor closest to them
 function matchUser($username) {
     require_once 'dbh.inc.php';
@@ -81,6 +104,7 @@ function matchUser($username) {
     $userLocation = findCityByName($conn, $userCity);
     $userLatitude = $userLocation["lat"];
     $userLongitude = $userLocation["lng"];
+    $userBloodtype = findBloodtypeByName($conn, $username);
 
     $minDistance = -1;
     $minDistanceDonor = "";
@@ -92,17 +116,25 @@ function matchUser($username) {
         $donorLocation = findCityByName($conn, $donorCity);
         $donorLatitude = $donorLocation["lat"];
         $donorLongitude = $donorLocation["lng"];
+        $donorBloodtype = $row["donorsBloodtype"];
 
         $distance = haversineGreatCircleDistance($userLatitude, $userLongitude, $donorLatitude, $donorLongitude, 6371000);
         
         // CHECK THAT BLOOD TYPE MATCHES
 
         if ($minDistance == -1) {
-            $minDistance = $distance;
-            $minDistanceDonor = $row["donorsName"];
-        } else if ($distance < $minDistance) {
-            $minDistance = $distance;
-            $minDistanceDonor = $row["donorsName"];
+            if ($userBloodtype == $donorBloodtype) {
+                $minDistance = $distance;
+                $minDistanceDonor = $row["donorsName"];
+            }
+            
+        } 
+        
+        if ($distance < $minDistance) {
+            if ($userBloodtype == $donorBloodtype) {
+                $minDistance = $distance;
+                $minDistanceDonor = $row["donorsName"];
+            }
         }
     }
 
