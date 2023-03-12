@@ -1,0 +1,65 @@
+.section {
+    padding-top: 90px;
+    padding-bottom: 9rem;
+}
+
+.new-container{
+    min-height: 300px;
+    width: 70%;
+    float: right;
+    margin-right: 5%;
+    margin-block-end: 80px;
+    border-radius: 0.3rem;
+    background-color: #a8d0e6;
+    padding: 2%;
+  }
+
+  .video {
+    grid-area: h;
+  }
+  .about {
+  
+    grid-area: d;
+  }
+  .guidelines {
+  
+    grid-area: q;
+  }
+  .tips {
+  
+    grid-area: t;
+  }
+  
+  .grid-container {
+    display:grid;
+  
+    border-radius: 0.3rem;
+    grid-template-areas: 
+    'h d'
+    'q t';
+    gap: 10px;
+    text-align: center;
+    /* background-color: #89d2fcba; */
+    padding: 10px;
+  }
+
+
+  .registration {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content:space-around;
+    padding: 3%;
+  }
+  .registration a {
+    color: #000;
+    text-decoration: none;
+    font-size: xx-large;
+    padding: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    border-radius: 0.9rem;
+    background: #fff8d8;
+    box-shadow: 1px 2px #495057;
+  }
+  
