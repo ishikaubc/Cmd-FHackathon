@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="signup.css" />
+    <link rel="stylesheet" href="donorlogin.css" />
   </head>
   <body>
     <div class = "sign-up-form">
@@ -22,9 +22,19 @@
         <label for="profile-picture">Upload a profile picture: <input id="profile-picture" type="file" name="file" /></label>
         <label for="bloodgroup">Enter your blood group <input id="blood group" type="text" name="bloodgroup" /></label>
         <label for="location">Enter your location<input id = "location" type = "text" name="location"/></label>
+        <select name = "location" id = "location">
         <!-- drop down menu to select location -->
         <?php
-            require_once 'includes/dbh.inc.php';
+        $serverName = "localhost";
+        $dBUsername = "root";
+        $dBPassword = "";
+        $dBName = "lifeconnect";
+        
+        $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName);
+        
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error()); // kill
+        }
 
             $result=mysqli_query($conn,"select * from canadacities");
             echo"<select name='location'>";
