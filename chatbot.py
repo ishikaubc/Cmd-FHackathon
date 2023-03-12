@@ -1,36 +1,46 @@
 
-import openai
+from dotenv import load_dotenv
+from random import choice
+from flask import Flask, request
+
 import os
+import openai
+load_dotenv()
+openai.api_key = "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"
+completion = openai.Completion()
 
-openai.api_key = os.getenv("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") # replace with your API key
+response = openai.Completion.create(
+  model="text-davinci-003",
+  prompt="Hello, I am your blood donor buddy. I will help you to know if you are fit to donate blood or not\n\nUser: Hi, I want to register to donate blood\nBot:   Okay, sounds good. What is your age?\n\nUser: I am 20 years old. \nBot: Okay, may I ask if you had any past medical history?\n\nUser: No, I am all good.\nBot: Okay, did you get a tattoo done within past 12 month?\n\nUser: No.\nBot:  You are eligible to donate blood.  Please contact your local blood bank to schedule an appointment. Thank you for your willingness to contribute to this noble cause.\n\n\n\n\n\n",
+  temperature=0.7,
+  max_tokens=256,
+  top_p=1,
+  frequency_penalty=0,
+  presence_penalty=0
+)
+start_sequence = "\nBot:"
+restart_sequence = "\n\nUser:"
+session_prompt = "Hello, I am your blood donor buddy. I will help you to know if you are fit to donate blood or not\n\nUser:Hi,I want to register to donate blood\nBot:Okay, sounds good. What is your age?\n\nUser:I am 20 years old.\nBot:Okay, may I ask if you had any past medical history?\n\nUser:No, I am all good.\nBot:Okay, did you get a tattoo done within past 12 month?\n\nUser:No.\nBot:You are eligible to donate blood.  Please contact your local blood bank to schedule an appointment. Thank you for your willingness to contribute to this noble cause."
 
-# set up the OpenAI API parameters
-model_engine = "davinci" # or another language model
-max_tokens = 60
-temperature = 0.5
-stop = "\n"
 
-# define a function to generate a response to user input
-def generate_response(prompt):
+
+def ask(question, chat_log=None):
+    prompt_text = f'{chat_log}{restart_sequence}: {question}{start_sequence}:'
     response = openai.Completion.create(
-        engine=model_engine,
-        prompt=prompt,
-        max_tokens=max_tokens,
-        temperature=temperature,
-        stop=stop,
+      engine="davinci",
+      temperature=0.7,
+      max_tokens=150,
+      top_p=1,
+      frequency_penalty=0,
+      presence_penalty=0.3,
+      stop=["\n"],
     )
-
-    message = response.choices[0].text.strip()
-    return message
-
-# define a function to handle user input and generate a response
-def handle_input(user_input):
-    prompt = f"User: {user_input}\nBot:"
-    response = generate_response(prompt)
-    return response
-
-# set up a loop to handle user input and generate responses
-while True:
-    user_input = input("You: ")
-    response = handle_input(user_input)
-    print(response)
+    return print(response.choices[0].text)
+ 
+def main():
+    while True:
+        print('GPT:Ask me a question\n')
+        myOn = input()
+        ask(myOn)
+        print('\n')
+main()
