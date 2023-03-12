@@ -1,20 +1,22 @@
 import './App.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from './components/Header';
+import TopNav from './components/TopNav';
 import Section1 from './components/Section1';
 import Section2 from './components/Section2';
 
-function App() {
+
+export default function App() {
   return (
-    <div className='homePage'>
-      <Header />
-      <div className='frame'>
-        <Section1 />
-        <Section2 />
-      </div>
+    <div id='page-top'>
+      <TopNav />
+
+        <div className='container1'>
+          <Section1 />
+          <Section2 />
+        </div>
     </div>
-  );
+
+  )
 }
 
-export default App;
