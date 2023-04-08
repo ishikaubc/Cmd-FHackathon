@@ -1,4 +1,4 @@
-# Cmd-FHackathon
+# LifeConnect
 
 Aim: To build a web application using React that connects blood donors from different parts of the world to the recepients. 
 
